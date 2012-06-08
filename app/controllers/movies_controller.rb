@@ -39,8 +39,7 @@ class MoviesController < ApplicationController
   end
   
   def show_order_by_title
-    id = params[:id]
-	@movies = Movie.all
+    
   end
 
 end
