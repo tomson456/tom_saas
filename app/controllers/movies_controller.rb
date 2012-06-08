@@ -38,8 +38,9 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
   
-  def sort_movies
-  
+  def show_order_by_title
+    id = params[:id]
+	@movies = Movie.all
   end
 
 end
