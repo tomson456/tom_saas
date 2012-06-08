@@ -7,7 +7,35 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+  
+	@checked_ratings = params[:ratings]
+    @all_ratings = Movie.getAllRatings
+    if params[:title_header] == ""
+      params[:title_header] = 0
+    end
+    if params[:release_date_header] = ""
+      params[:release_date_header] = 0
+    end
+    if params.has_key?(:title_header) and Integer(params[:title_header]) == 1
+      @highlight_title = true
+      @movies = Movie.order(:title)
+    elsif params.has_key?(:release_date_header) and Integer(params[:release_date_header]) == 1
+      @highlight_release_date = true
+      @movies = Movie.order(:release_date)
+    else
+      @movies = []
+      if @checked_ratings
+        @checked_ratings.each do |rating|
+          Movie.getMoviesWithRating(rating).each do |movie|
+            @movies << movie
+          end
+        end
+        return @movies
+      else
+        @movies = []
+      end
+      return @movies        
+    end
   end
 
   def new
