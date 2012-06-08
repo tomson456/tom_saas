@@ -4,8 +4,8 @@
 %table#movies
   %thead
     %tr
-      %th= link_to 'Movie Title' , movie_path(11)
-      %th Rating
+      %th= link_to 'Movie Title' , movies_path(:order=>'title')
+      %th RAting
       %th= link_to 'Release Date' , movie_path(2)
       %th More Info
   %tbody
