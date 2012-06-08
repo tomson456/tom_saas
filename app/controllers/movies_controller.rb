@@ -38,8 +38,6 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
   
-  def show_order_by_title
-    
-  end
+  
 
 end
