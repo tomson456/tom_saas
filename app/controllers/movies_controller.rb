@@ -7,6 +7,12 @@ class MoviesController < ApplicationController
   end
 
   def index
+	if params[:title_header]==""
+	params[:title_heade] = 0
+	end
+	if params[:release_date_header] = ""
+      params[:release_date_header] = 0
+    end
   	@movies = Movie.all
   end
 
